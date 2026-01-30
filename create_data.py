@@ -82,9 +82,13 @@ def write_training_data_to_shards(
             if q % 1000 == 0:
                 print("question", q)
             for i in range(q_repeats):
-                subject_token, relationship_token, object_token, alt_object_token = (
-                    token_matchings
-                )
+                for tm in token_matchings:
+                    (
+                        subject_token,
+                        relationship_token,
+                        object_token,
+                        alt_object_token,
+                    ) = tm
                 if int(o_token.split("=")[1]) not in subjects_with_questions:
                     continue
                 n_o_t = copy.deepcopy(object_token)
@@ -179,12 +183,14 @@ def write_validation_data(
     questions = {}
     new_questions = {}
     if args.questions_frac > 0 and question_phrase_creator is not None:
-        for o_token, (
-            subject_token,
-            relationship_token,
-            object_token,
-            _,
-        ) in tokenized_edges.items():
+        for (o_token, token_matchings) in tokenized_edges.items():
+            for tm in token_matchings:
+                (
+                    subject_token,
+                    relationship_token,
+                    object_token,
+                    _,
+                ) = tm
             question_phrases = question_phrase_creator.create_val_phrase(
                 subject_token, relationship_token, object_token
             )
