@@ -50,16 +50,20 @@ def get_all_special_tokens(num_tokens, special_tokens={}):
 
 def try_to_load_special_tokens(data_path):
     '''
-    For an already created data directory, load the json containing special tokens, if it exists.
+    For an already created data directory, load the json containing special tokens and the next token ID.
     
     :param data_path: The path of the dataset from which we want to load the tokens.
     '''
     special_tokens_path = os.path.join(data_path, "viscera", "other_special_tokens.json")
-    if os.path.isfile(special_tokens_path):
+    metadata_path = os.path.join(data_path, "viscera", "metadata.json")
+    if os.path.isfile(special_tokens_path) and os.path.isfile(metadata_path):
         with open(special_tokens_path, "r", encoding="utf-8") as f:
-            return json.load(f)
+            special_tokens =  json.load(f)
+        with open(metadata_path, "r", encoding="utf-8") as f:
+            next_token_id = json.load(f)["vocab_size"] - 1
+        return special_tokens, next_token_id
     else:
-        return None
+        return None, None
 
 
 class PhraseCreator(ABC):
