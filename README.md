@@ -9,6 +9,8 @@ While Behemoth can be used more generally, our special focus was to study the ef
 
 Further details are available in our paper, which will be published soon.
 
+The data, tokenizer, and finetuning data were built to be compatible with the [LitGPT library](https://github.com/Lightning-AI/litgpt). Modification may be necessary to work with other model training and finetuning libraries.
+
 # Entry points
 An example command to generate data looks like:
 ```
