@@ -19,3 +19,17 @@ An example command to create fine-tuning data looks like:
 ```
 python create_finetuning_data.py -g /path/to/training/data --n [NUM_OVERRIDES] --num-repeats-per-override [NUMBER_OF_TIMES_TO_REPEAT_EACH_OVERRIDE]
 ```
+
+# File descriptions.
+
+The code consists of two main entry points and several utility modules:
+
+* `create_data.py` is the entry point for data creation. This file contains the code and parameters for training data creation: generating a random set of subject-relationship-object tuples, creating a custom tokenizer that converts the subjects, relationships, and objects to "words", and writing these words to sentences using the selected syntax. In addition to simple, independently generated (s, r, o) tuples, the code allows for the creation of (s, r, o) tuples where the objects of the first and second relationship are correlated, and ones with nested objects (see above). Additionally, we support the creation of data where some of the sentences encode a dissenting (s, r, o`) value instead of (s, r, o), and data where some of the subjects' data is written in an alternate Q/A format. Note that the entirety of the finetuning data, i.e., many repeats of each sentence, is written to disk. Additionally, metadata is written to disk in the `viscera` folder.
+
+* `create_finetuning_data.py` is the entry point for creating finetuning data that modifies some of the (s, r, o) tuples in the training data to have new values. The new training data is written to disk in the instruction-tuned format, to be compatible with Lightning AI's LitGPT library. We support the modifications of either rewriting all object values for one relationship to a single value (representing forgetting that relationship), or changing `n` of the (s, r, o) tuples for a single relationship to a new value.
+
+* `graph_utils.py` contains the code for creating and storing the randomly generated graph of (s, r, o) tuples.
+
+* `tokenization_utils.py` contains the code for generating a custom tokenizer for a dataset.
+
+* phrase_creation_utils.py contains the code for transforming graph edges into sentences according to the configurations specified during data creation.
