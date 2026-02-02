@@ -7,7 +7,7 @@ This project was largely inspired by the Physics of Large Language Models papers
 
 While Behemoth can be used more generally, our special focus was to study the effects of editing data once it is learned by the model, and therefore, we provide an additional script to create fine-tuning data that modifies some of the `facts' in the training data.
 
-Further details are available in our paper, which will be published soon.
+Further details are available in our [paper](https://arxiv.org/abs/2601.23153).
 
 The data, tokenizer, and finetuning data were built to be compatible with the [LitGPT library](https://github.com/Lightning-AI/litgpt). Modification may be necessary to work with other model training and finetuning libraries.
 
