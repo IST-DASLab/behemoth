@@ -19,7 +19,7 @@ def load_subject_relationship_object_remappings(graph_dir):
     
     :param graph_dir: Path to main data dir.
     '''
-    with open(os.path.join(graph_dir, 'viscera', 'remappings_map.json'), 'r') as f:
+    with open(os.path.join(graph_dir, 'metadata', 'remappings_map.json'), 'r') as f:
         remappings = json.load(f)
     return remappings
     
@@ -1010,7 +1010,7 @@ if __name__ == "__main__":
             os.path.basename(os.path.basename(args.graph_path)),
         )
 
-    stored_args_path = os.path.join(args.graph_path, "viscera", "args.json")
+    stored_args_path = os.path.join(args.graph_path, "metadata", "args.json")
     if os.path.isfile(stored_args_path):
         with open(stored_args_path, "r", encoding="utf-8") as f:
             original_args = json.load(f)
@@ -1047,7 +1047,7 @@ if __name__ == "__main__":
     remappings = load_subject_relationship_object_remappings(args.graph_path) 
 
     subjects_with_questions_path = os.path.join(
-        args.graph_path, "viscera", "subjects_with_questions.txt"
+        args.graph_path, "metadata", "subjects_with_questions.txt"
     )
     if os.path.isfile(subjects_with_questions_path):
         with open(subjects_with_questions_path, "r", encoding="utf-8") as f:
@@ -1101,7 +1101,7 @@ if __name__ == "__main__":
     os.makedirs(
         os.path.join(args.output_dir, args.ft_subdir, "ft_questions"), exist_ok=True
     )
-    os.makedirs(os.path.join(args.output_dir, args.ft_subdir, "viscera"), exist_ok=True)
+    os.makedirs(os.path.join(args.output_dir, args.ft_subdir, "metadata"), exist_ok=True)
 
     t1 = datetime.datetime.now()
     create_data(

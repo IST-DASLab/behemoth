@@ -217,15 +217,15 @@ def dump_tokenizer(
         )
 
     with open(
-        os.path.join(output_dir, "viscera", "tokenizer.json"), "w", encoding="utf-8"
+        os.path.join(output_dir, "metadata", "tokenizer.json"), "w", encoding="utf-8"
     ) as f:
         json.dump(config, f)
 
     for f in ["tokenizer_config.json"]:
-        shutil.copy(os.path.join(BASE_TOKENIZER_PATH, f), os.path.join(output_dir, "viscera", f))
+        shutil.copy(os.path.join(BASE_TOKENIZER_PATH, f), os.path.join(output_dir, "metadata", f))
 
     with open(
-        os.path.join(output_dir, "viscera", "remappings_map.json"),
+        os.path.join(output_dir, "metadata", "remappings_map.json"),
         "w",
         encoding="utf-8",
     ) as f:
@@ -285,7 +285,7 @@ def dump_tokenized_graph(converted_edges, output_dir, prefix=""):
     '''
     with open(
         os.path.join(
-            output_dir, "viscera", prefix + "relationship_graph_quasitokens.txt"
+            output_dir, "metadata", prefix + "relationship_graph_tokenized.txt"
         ),
         "w",
         encoding="utf-8",
@@ -319,7 +319,7 @@ def dump_tokenized_graph(converted_edges, output_dir, prefix=""):
             f.write(line + "\n")
     with open(
         os.path.join(
-            output_dir, "viscera", prefix + "relationship_graph_quasitokens.pkl"
+            output_dir, "metadata", prefix + "relationship_graph_tokenized.pkl"
         ),
         "wb",
     ) as f:
@@ -449,7 +449,7 @@ def tokenize_and_dump_graph(
 
     if dump_graph:
         with open(
-            os.path.join(output_dir, "viscera", "relationship_graph_quasitokens.txt"),
+            os.path.join(output_dir, "metadata", "relationship_graph_tokenized.txt"),
             "w",
             encoding="utf-8",
         ) as f:
@@ -481,7 +481,7 @@ def tokenize_and_dump_graph(
                         line += "\t\t\t"
                 f.write(line + "\n")
         with open(
-            os.path.join(output_dir, "viscera", "relationship_graph_quasitokens.pkl"),
+            os.path.join(output_dir, "metadata", "relationship_graph_tokenized.pkl"),
             "wb",
         ) as f:
             pkl.dump(converted_edges, f, protocol=pkl.HIGHEST_PROTOCOL)

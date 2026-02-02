@@ -137,7 +137,7 @@ def dump_untokenized_graph(graph, output_dir):
     :param graph: The graph to write
     :param output_dir: The location of the data
     '''
-    with open(os.path.join(output_dir, "viscera", "relationship_graph.txt"), "w", encoding="utf-8") as f:
+    with open(os.path.join(output_dir, "metadata", "relationship_graph.txt"), "w", encoding="utf-8") as f:
         for v in graph:
             f.write(" ".join([str(x) for x in v]) + "\n")
 
@@ -148,7 +148,7 @@ def read_untokenized_graph(graph_path):
     
     :param graph_path: Path to the graph.
     '''
-    with open(os.path.join(graph_path, "viscera", "relationship_graph.txt"), "r", encoding="utf-8") as f:
+    with open(os.path.join(graph_path, "metadata", "relationship_graph.txt"), "r", encoding="utf-8") as f:
         graph = [line.strip().split(" ") for line in f.readlines()]
 
         def make_int(x):
@@ -170,7 +170,7 @@ def dump_tokenized_graph(converted_edges, output_dir, prefix=""):
     '''
     with open(
         os.path.join(
-            output_dir, "viscera", prefix + "relationship_graph_quasitokens.txt"
+            output_dir, "metadata", prefix + "relationship_graph_tokenized.txt"
         ),
         "w",
         encoding="utf-8"
@@ -206,7 +206,7 @@ def dump_tokenized_graph(converted_edges, output_dir, prefix=""):
             f.write(line + "\n")
     with open(
         os.path.join(
-            output_dir, "viscera", prefix + "relationship_graph_quasitokens.pkl"
+            output_dir, "metadata", prefix + "relationship_graph_tokenized.pkl"
         ),
         "wb",
     ) as f:
@@ -220,7 +220,7 @@ def read_tokenized_graph(graph_path):
     :param graph_path: The root data directory to read from.
     '''
     with open(
-        os.path.join(graph_path, "viscera", "relationship_graph_quasitokens.pkl"), "rb"
+        os.path.join(graph_path, "metadata", "relationship_graph_tokenized.pkl"), "rb"
     ) as f:
         graph = pkl.load(f)
     return graph

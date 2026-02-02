@@ -17,7 +17,7 @@ class TestDataGeneration(unittest.TestCase):
         with open(TEST_DATA_DIR + "/simple/data/full_text_0.txt", "r") as f:
             train_data = f.readlines()[0].strip().split("<|endoftext|>")
         with open(
-            TEST_DATA_DIR + "/simple/viscera/relationship_graph_quasitokens.txt", "r"
+            TEST_DATA_DIR + "/simple/metadata/relationship_graph_tokenized.txt", "r"
         ) as f:
             triples = [x.strip().split() for x in f.readlines()]
         for triplet in triples:
@@ -35,7 +35,7 @@ class TestNestedDataGeneration(unittest.TestCase):
         with open(TEST_DATA_DIR + "/nested/data/full_text_0.txt", "r") as f:
             train_data = f.readlines()[0].strip().split("<|endoftext|>")
         with open(
-            TEST_DATA_DIR + "/nested/viscera/relationship_graph_quasitokens.txt", "r"
+            TEST_DATA_DIR + "/nested/metadata/relationship_graph_tokenized.txt", "r"
         ) as f:
             triples = [x.strip().split() for x in f.readlines()]
         for triplet in triples:

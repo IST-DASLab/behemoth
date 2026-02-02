@@ -17,7 +17,7 @@ class TestFTDataGeneration(unittest.TestCase):
         with open(TEST_DATA_DIR + "/simple/data/full_text_0.txt", "r") as f:
             train_data = f.readlines()[0].strip().split("<|endoftext|>")
         with open(
-            TEST_DATA_DIR + "/simple/viscera/relationship_graph_quasitokens.txt", "r"
+            TEST_DATA_DIR + "/simple/metadata/relationship_graph_tokenized.txt", "r"
         ) as f:
             orig_triples = [x.strip().split() for x in f.readlines()]
         os.system(
@@ -25,7 +25,7 @@ class TestFTDataGeneration(unittest.TestCase):
         )
         with open(
             TEST_DATA_DIR
-            + "/simple/ftremapping_1overrides_2overriderepeats_allsame/viscera/edited_relationship_graph_quasitokens.txt",
+            + "/simple/ftremapping_1overrides_2overriderepeats_allsame/metadata/edited_relationship_graph_tokenized.txt",
             "r",
         ) as f:
             remapped_triplet = [x.strip().split() for x in f.readlines()]
@@ -39,7 +39,7 @@ class TestFTDataGeneration(unittest.TestCase):
             self.assertTrue(found_match)
         # with open(
         #     TEST_DATA_DIR
-        #     + "/simple/ftremapping_1overrides_2overriderepeats_allsame/viscera/edited_relationship_graph_quasitokens.txt",
+        #     + "/simple/ftremapping_1overrides_2overriderepeats_allsame/metadata/edited_relationship_graph_tokenized.txt",
         #     "r",
         # ) as f:
         #     remapped_triplet = [x.strip().split() for x in f.readlines()]
@@ -54,7 +54,7 @@ class TestFTDataGeneration(unittest.TestCase):
         for prefix in ["with_same_value", "with_same_rel", "reg_data"]:
             with open(
                 TEST_DATA_DIR
-                + f"/simple/ftremapping_1overrides_2overriderepeats_allsame/viscera/{prefix}_relationship_graph_quasitokens.txt",
+                + f"/simple/ftremapping_1overrides_2overriderepeats_allsame/metadata/{prefix}_relationship_graph_tokenized.txt",
                 "r",
             ) as f:
                 remapped_triplet = [x.strip().split() for x in f.readlines()]
@@ -83,7 +83,7 @@ class TestFTDataGeneration(unittest.TestCase):
         with open(TEST_DATA_DIR + "/simple/data/full_text_0.txt", "r") as f:
             train_data = f.readlines()[0].strip().split("<|endoftext|>")
         with open(
-            TEST_DATA_DIR + "/simple/viscera/relationship_graph_quasitokens.txt", "r"
+            TEST_DATA_DIR + "/simple/metadata/relationship_graph_tokenized.txt", "r"
         ) as f:
             orig_triples = [x.strip().split() for x in f.readlines()]
         os.system(
@@ -91,7 +91,7 @@ class TestFTDataGeneration(unittest.TestCase):
         )
         with open(
             TEST_DATA_DIR
-            + "/simple/ftremapping_2overrides_2overriderepeats/viscera/edited_relationship_graph_quasitokens.txt",
+            + "/simple/ftremapping_2overrides_2overriderepeats/metadata/edited_relationship_graph_tokenized.txt",
             "r",
         ) as f:
             remapped_triplet = [x.strip().split() for x in f.readlines()]
@@ -112,7 +112,7 @@ class TestFTDataGeneration(unittest.TestCase):
         for prefix in ["with_same_value", "with_same_rel", "reg_data"]:
             with open(
                 TEST_DATA_DIR
-                + f"/simple/ftremapping_2overrides_2overriderepeats/viscera/{prefix}_relationship_graph_quasitokens.txt",
+                + f"/simple/ftremapping_2overrides_2overriderepeats/metadata/{prefix}_relationship_graph_tokenized.txt",
                 "r",
             ) as f:
                 remapped_triplet = [x.strip().split() for x in f.readlines()]
@@ -144,7 +144,7 @@ class TestNested_FTDataGeneration(unittest.TestCase):
         with open(TEST_DATA_DIR + "/nested/data/full_text_0.txt", "r") as f:
             train_data = f.readlines()[0].strip().split("<|endoftext|>")
         with open(
-            TEST_DATA_DIR + "/nested/viscera/relationship_graph_quasitokens.txt", "r"
+            TEST_DATA_DIR + "/nested/metadata/relationship_graph_tokenized.txt", "r"
         ) as f:
             orig_triples = [x.strip().split() for x in f.readlines()]
         for triplet in orig_triples:
@@ -167,7 +167,7 @@ class TestNested_FTDataGeneration(unittest.TestCase):
         )
         with open(
             TEST_DATA_DIR
-            + "/nested/ftremapping_2overrides_2overriderepeats_allsame/viscera/edited_relationship_graph_quasitokens.txt",
+            + "/nested/ftremapping_2overrides_2overriderepeats_allsame/metadata/edited_relationship_graph_tokenized.txt",
             "r",
         ) as f:
             remapped_triplet = [x.strip().split() for x in f.readlines()]
@@ -187,7 +187,7 @@ class TestNested_FTDataGeneration(unittest.TestCase):
         for prefix in ["with_same_value", "with_same_rel", "reg_data"]:
             with open(
                 TEST_DATA_DIR
-                + f"/nested/ftremapping_2overrides_2overriderepeats_allsame/viscera/{prefix}_relationship_graph_quasitokens.txt",
+                + f"/nested/ftremapping_2overrides_2overriderepeats_allsame/metadata/{prefix}_relationship_graph_tokenized.txt",
                 "r",
             ) as f:
                 non_remapped_triplet = [x.strip().split() for x in f.readlines()]

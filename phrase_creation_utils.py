@@ -54,8 +54,8 @@ def try_to_load_special_tokens(data_path):
     
     :param data_path: The path of the dataset from which we want to load the tokens.
     '''
-    special_tokens_path = os.path.join(data_path, "viscera", "other_special_tokens.json")
-    metadata_path = os.path.join(data_path, "viscera", "metadata.json")
+    special_tokens_path = os.path.join(data_path, "metadata", "other_special_tokens.json")
+    metadata_path = os.path.join(data_path, "metadata", "metadata.json")
     if os.path.isfile(special_tokens_path) and os.path.isfile(metadata_path):
         with open(special_tokens_path, "r", encoding="utf-8") as f:
             special_tokens =  json.load(f)

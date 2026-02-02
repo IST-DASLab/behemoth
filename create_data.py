@@ -427,7 +427,7 @@ if __name__ == "__main__":
     subjects_with_questions = None
     if args.graph_path is not None:
         subjects_with_questions_path = os.path.join(
-            args.graph_path, "viscera", "subjects_with_questions.txt"
+            args.graph_path, "metadata", "subjects_with_questions.txt"
         )
         if os.path.isfile(subjects_with_questions_path):
             with open(subjects_with_questions_path, "r", encoding="utf-8") as f:
@@ -438,7 +438,7 @@ if __name__ == "__main__":
                     [int(x) for x in y] for y in subjects_with_questions
                 ]
 
-    os.makedirs(os.path.join(args.output_dir, "viscera"), exist_ok=True)
+    os.makedirs(os.path.join(args.output_dir, "metadata"), exist_ok=True)
     os.makedirs(os.path.join(args.output_dir, "validations"), exist_ok=True)
     os.makedirs(os.path.join(args.output_dir, "questions"), exist_ok=True)
     os.makedirs(os.path.join(args.output_dir, "data"), exist_ok=True)
@@ -524,7 +524,7 @@ if __name__ == "__main__":
                 with open(
                     os.path.join(
                         args.output_dir,
-                        "viscera",
+                        "metadata",
                         "subjects_with_questions_tokenized.txt",
                     ),
                     "w",
@@ -534,7 +534,7 @@ if __name__ == "__main__":
                         f.write(str(s) + "\n")
                 with open(
                     os.path.join(
-                        args.output_dir, "viscera", "subjects_with_questions.txt"
+                        args.output_dir, "metadata", "subjects_with_questions.txt"
                     ),
                     "w",
                     encoding="utf-8",
@@ -607,7 +607,7 @@ if __name__ == "__main__":
     print(graph_size, vocab_size, total_num_tokens)
     if not (args.validation_data_only):
         with open(
-            os.path.join(args.output_dir, "viscera", "metadata.json"),
+            os.path.join(args.output_dir, "metadata", "metadata.json"),
             "w",
             encoding="utf-8",
         ) as f:
@@ -621,14 +621,14 @@ if __name__ == "__main__":
             )
 
         with open(
-            os.path.join(args.output_dir, "viscera", "other_special_tokens.json"),
+            os.path.join(args.output_dir, "metadata", "other_special_tokens.json"),
             "w",
             encoding="utf-8",
         ) as f:
             json.dump(OTHER_SPECIAL_TOKENS, f, indent=4)
 
         with open(
-            os.path.join(args.output_dir, "viscera", "args.json"), "w", encoding="utf-8"
+            os.path.join(args.output_dir, "metadata", "args.json"), "w", encoding="utf-8"
         ) as f:
             json.dump(vars(args), f, indent=4)
     print(args.output_dir)
